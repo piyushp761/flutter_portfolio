@@ -6,4 +6,5 @@ class Constants{
   static const PROFILE_BEHANCE = 'https://www.behance.net/piyushpassi';
   static const CONTACT_EMAIL = 'mailto:piyushp761@gmail.com';
   static const PROFILE_STACKOVERFLOW = 'https://stackoverflow.com/users/10215041/piyush-passi';
+  static const RESUME = 'https://drive.google.com/file/d/1uCqXeBfbYxRNOcyWkrerI4X62GUG3F0C/view?usp=sharing';
 }

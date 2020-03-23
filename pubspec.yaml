@@ -17,6 +17,7 @@ flutter:
   - assets/works/
   - images/design.png
   - images/design1.png
+  - assets/animations/
   fonts:
   - family: GoogleSansRegular
     fonts:
