@@ -36,7 +36,8 @@ class ProjectWidget extends StatelessWidget {
                 flex: 60,
                 child: Container(
                   padding: EdgeInsets.only(top: 8.0),
-                  child: Column(
+                  child: SingleChildScrollView(
+                    child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,7 +73,7 @@ class ProjectWidget extends StatelessWidget {
                         ],
                       )
                     ],
-                  ),
+                  )),
                 ),
               )
             ],

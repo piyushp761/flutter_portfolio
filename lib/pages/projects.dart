@@ -25,46 +25,23 @@ class _Page2State extends State<Page2> {
       child: Scaffold(
           appBar: new AppBar(
             centerTitle: true,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Center(
-                    child: Wrap(
-                  direction: Axis.horizontal,
-                  runSpacing: 20,
-                  spacing: 20,
-                  alignment: WrapAlignment.center,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  runAlignment: WrapAlignment.center,
-                  children: <Widget>[
-                    FlatButton.icon(
-                      icon: SizedBox(child: l),
-                      label: Text(''),
-                      onPressed: () => _popNavigationWithResult(context, 'from_pp'),
-                    ),
-                    FlatButton.icon(
-                      icon: SizedBox(
-                          width: 20,
-                          height: 20,
-                          child: Image.asset(
-                              ThemeSwitcher.of(context).isDarkModeOn
-                                  ? Assets.behance
-                                  : Assets.behance_light)),
-                      label: Text('Behance Portfolio'),
-                      onPressed: () => html.window.open(
-                        Constants.PROFILE_BEHANCE,
-                        'piyushpassi',
-                      ),
-                    ),
+            title: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                FlatButton.icon(
+                  icon: SizedBox(child: l),
+                  label: Text(''),
+                  onPressed: () {},
+                ),
                     IconButton(
                       icon: ThemeSwitcher.of(context).isDarkModeOn
-                          ? Icon(Icons.wb_sunny)
-                          : Image.asset(
+                          ? Image.asset(
                               Assets.moon,
                               height: 20,
                               width: 20,
-                            ),
+                            )
+                          : Icon(Icons.wb_sunny),
                       onPressed: () {
                         if (ThemeSwitcher.of(context).isDarkModeOn == true) {
                           ThemeSwitcher.of(context).switchDarkMode();
@@ -77,20 +54,6 @@ class _Page2State extends State<Page2> {
                           n = NetworkImage(
                               "https://i.ibb.co/f9w1yyn/bg-dark.jpg");
                           i = Image.asset(
-                            'images/design.png',
-                            height: 400,
-                            width: 400,
-                          );
-                          l = new Image.asset(
-                            'assets/title1.png',
-                            fit: BoxFit.contain,
-                            height: 32,
-                            width: 32,
-                          );
-                        } else {
-                          n = NetworkImage(
-                              "https://i.ibb.co/87WGknD/bg-light.jpg");
-                          i = Image.asset(
                             'images/design1.png',
                             height: 400,
                             width: 400,
@@ -101,13 +64,25 @@ class _Page2State extends State<Page2> {
                             height: 32,
                             width: 32,
                           );
+                        } else {
+                          n = NetworkImage(
+                              "https://i.ibb.co/87WGknD/bg-light.jpg");
+                          i = Image.asset(
+                            'images/design.png',
+                            height: 400,
+                            width: 400,
+                          );
+                          l = new Image.asset(
+                            'assets/title1.png',
+                            fit: BoxFit.contain,
+                            height: 32,
+                            width: 32,
+                          );
                         }
                       },
                     )
                   ],
                 )),
-              ],
-            ),
             actions: <Widget>[],
           ),
           body: ResponsiveWidget(
@@ -120,6 +95,7 @@ class _Page2State extends State<Page2> {
                   (index) => ProjectWidget(projects[index], 0)),
             ),
             smallScreen: ListView.builder(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
                 itemCount: projects.length,
                 itemBuilder: (context, index) => ProjectWidget(projects[index],
                     (index == projects.length - 1 ? 16.0 : 0))),

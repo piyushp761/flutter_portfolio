@@ -27,8 +27,8 @@ class Piyush extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Piyush Passi',
       theme: ThemeSwitcher.of(context).isDarkModeOn
-          ? darkTheme(context)
-          : lightTheme(context),
+          ? lightTheme(context)
+          : darkTheme(context),
       home: HomePage(),
     );
   }

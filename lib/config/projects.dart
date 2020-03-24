@@ -31,4 +31,14 @@ final List<Project> projects = [
       work: '2019 | REDCARPET',
       tag1: 'Graphic Design',
       tag2: 'Illustration'),
+  Project(
+      name: 'Indian Nationals 2019',
+      image: Assets.nationals,
+      description:
+          'The biggest Rubik’s cube and related puzzles competition in India – Indian Nationals 2019, was held in Shiv Nadar University from 12th to 14th of April 2019. Atttended by over 400 participants, designing various graphics for this massive event was a real learning curve for me.',
+      link:
+          'https://www.behance.net/gallery/79112611/Indian-Nationals-2019-A-Speedcubing-Competition',
+      work: '2019 | CAPITAL CUBING',
+      tag1: 'Graphic Design',
+      tag2: 'Illustration'),
 ];

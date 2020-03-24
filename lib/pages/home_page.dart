@@ -5,15 +5,14 @@ import 'package:piyushpassi/config/constants.dart';
 import 'dart:html' as html;
 import 'projects.dart';
 
-
 NetworkImage n = new NetworkImage("https://i.ibb.co/87WGknD/bg-light.jpg");
 Image i = new Image.asset(
-  'images/design1.png',
+  'images/design.png',
   height: 400,
   width: 400,
 );
 Image l = new Image.asset(
-  'assets/title.png',
+  'assets/title1.png',
   fit: BoxFit.contain,
   height: 32,
   width: 32,
@@ -42,19 +41,6 @@ class _HomePageState extends State<HomePage> {
       if (n == NetworkImage("https://i.ibb.co/87WGknD/bg-light.jpg")) {
         n = NetworkImage("https://i.ibb.co/f9w1yyn/bg-dark.jpg");
         i = Image.asset(
-          'images/design.png',
-          height: 400,
-          width: 400,
-        );
-        l = new Image.asset(
-          'assets/title1.png',
-          fit: BoxFit.contain,
-          height: 32,
-          width: 32,
-        );
-      } else {
-        n = NetworkImage("https://i.ibb.co/87WGknD/bg-light.jpg");
-        i = Image.asset(
           'images/design1.png',
           height: 400,
           width: 400,
@@ -65,12 +51,33 @@ class _HomePageState extends State<HomePage> {
           height: 32,
           width: 32,
         );
+      } else {
+        n = NetworkImage("https://i.ibb.co/87WGknD/bg-light.jpg");
+        i = Image.asset(
+          'images/design.png',
+          height: 400,
+          width: 400,
+        );
+        l = new Image.asset(
+          'assets/title1.png',
+          fit: BoxFit.contain,
+          height: 32,
+          width: 32,
+        );
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    if (width > 800){
+      width = width*.45;
+    }
+    else{
+      width = width*.90;
+    }
+
     return Stack(
       children: <Widget>[
         new Container(
@@ -81,52 +88,32 @@ class _HomePageState extends State<HomePage> {
             appBar: new AppBar(
               backgroundColor: Colors.transparent,
               title: Center(
-                  child: Wrap(
-                direction: Axis.horizontal,
-                runSpacing: 20,
-                spacing: 20,
-                alignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                runAlignment: WrapAlignment.center,
-                children: <Widget>[
-                  FlatButton.icon(
-                    icon: SizedBox(child: l),
-                    label: Text(''),
-                    onPressed: () {},
-                  ),
-                  FlatButton.icon(
-                    icon: SizedBox(
-                        width: 20,
-                        height: 20,
-                        child: Image.asset(
-                            ThemeSwitcher.of(context).isDarkModeOn
-                                ? Assets.behance
-                                : Assets.behance_light)),
-                    label: Text('Behance Portfolio'),
-                    onPressed: () => html.window.open(
-                      Constants.PROFILE_BEHANCE,
-                      'piyushpassi',
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                    FlatButton.icon(
+                      icon: SizedBox(child: l),
+                      label: Text(''),
+                      onPressed: () {},
                     ),
-                  ),
-                  IconButton(
-                    hoverColor: Color.fromARGB(50, 10, 10, 10),
-                    icon: ThemeSwitcher.of(context).isDarkModeOn
-                        ? Icon(Icons.wb_sunny)
-                        : Image.asset(
-                            Assets.moon,
-                            height: 20,
-                            width: 20,
-                          ),
-                    onPressed: change,
-                  ),
-                ],
-              )),
+                    IconButton(
+                      hoverColor: Color.fromARGB(50, 10, 10, 10),
+                      icon: ThemeSwitcher.of(context).isDarkModeOn
+                          ? Image.asset(
+                              Assets.moon,
+                              height: 20,
+                              width: 20,
+                            )
+                          : Icon(Icons.wb_sunny),
+                      onPressed: change,
+                    ),
+                  ])),
               elevation: 0.0,
               actions: <Widget>[],
             ),
             body: SingleChildScrollView(
               child: new Padding(
-                padding: EdgeInsets.fromLTRB(10, 100, 10, 0),
+                padding: EdgeInsets.fromLTRB(10, 100, 10, 100),
                 child: Center(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -161,15 +148,18 @@ class _HomePageState extends State<HomePage> {
                             icon: SizedBox(child: Icon(Icons.email)),
                             label: Text(
                               'Get in touch',
+                              style: TextStyle(fontWeight: FontWeight.bold),
                               textScaleFactor: 1.2,
                             ),
                             onPressed: () => html.window
                                 .open(Constants.CONTACT_EMAIL, 'piyushpassi'),
                           ),
                           FlatButton.icon(
+                            color: Color.fromARGB(50, 219, 135, 255),
                             icon: SizedBox(child: Icon(Icons.filter)),
                             label: Text(
                               'My Work',
+                              style: TextStyle(fontWeight: FontWeight.bold),
                               textScaleFactor: 1.2,
                             ),
                             onPressed: () async {
@@ -180,9 +170,11 @@ class _HomePageState extends State<HomePage> {
                             },
                           ),
                           FlatButton.icon(
-                            icon: SizedBox(child: Icon(Icons.insert_drive_file )),
+                            icon:
+                                SizedBox(child: Icon(Icons.insert_drive_file)),
                             label: Text(
                               'Résumé',
+                              style: TextStyle(fontWeight: FontWeight.bold),
                               textScaleFactor: 1.2,
                             ),
                             onPressed: () => html.window
@@ -205,8 +197,8 @@ class _HomePageState extends State<HomePage> {
                                   height: 20,
                                   child: Image.asset(
                                       ThemeSwitcher.of(context).isDarkModeOn
-                                          ? Assets.github
-                                          : Assets.github_light)),
+                                          ? Assets.github_light
+                                          : Assets.github)),
                               label: Text('Github'),
                               onPressed: () => html.window.open(
                                   Constants.PROFILE_GITHUB, 'piyushpassi'),
@@ -217,8 +209,20 @@ class _HomePageState extends State<HomePage> {
                                   height: 20,
                                   child: Image.asset(
                                       ThemeSwitcher.of(context).isDarkModeOn
-                                          ? Assets.stackoverflow
-                                          : Assets.stackoverflow_light)),
+                                          ? Assets.behance_light
+                                          : Assets.behance)),
+                              label: Text('Behance'),
+                              onPressed: () => html.window.open(
+                                  Constants.PROFILE_BEHANCE, 'piyushpassi'),
+                            ),
+                            FlatButton.icon(
+                              icon: SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: Image.asset(
+                                      ThemeSwitcher.of(context).isDarkModeOn
+                                          ? Assets.stackoverflow_light
+                                          : Assets.stackoverflow)),
                               label: Text('Stackoverflow'),
                               onPressed: () => html.window.open(
                                   Constants.PROFILE_STACKOVERFLOW,
@@ -230,8 +234,8 @@ class _HomePageState extends State<HomePage> {
                                   height: 20,
                                   child: Image.asset(
                                       ThemeSwitcher.of(context).isDarkModeOn
-                                          ? Assets.medium
-                                          : Assets.medium_light)),
+                                          ? Assets.medium_light
+                                          : Assets.medium)),
                               label: Text('Medium'),
                               onPressed: () => html.window.open(
                                   Constants.PROFILE_MEDIUM, 'piyushpassi'),
@@ -242,8 +246,8 @@ class _HomePageState extends State<HomePage> {
                                   height: 20,
                                   child: Image.asset(
                                       ThemeSwitcher.of(context).isDarkModeOn
-                                          ? Assets.instagram
-                                          : Assets.instagram_light)),
+                                          ? Assets.instagram_light
+                                          : Assets.instagram)),
                               label: Text('Instagram'),
                               onPressed: () => html.window.open(
                                   Constants.PROFILE_INSTAGRAM, 'piyushpassi'),
@@ -254,13 +258,47 @@ class _HomePageState extends State<HomePage> {
                                   height: 20,
                                   child: Image.asset(
                                       ThemeSwitcher.of(context).isDarkModeOn
-                                          ? Assets.linkedin
-                                          : Assets.linkedin_light)),
+                                          ? Assets.linkedin_light
+                                          : Assets.linkedin)),
                               label: Text('Linkedin'),
                               onPressed: () => html.window.open(
                                   Constants.PROFILE_LINKEDIN, 'piyushpassi'),
                             )
                           ]),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Wrap(
+                        direction: Axis.horizontal,
+                        alignment: WrapAlignment.center,
+                        runSpacing: 40,
+                        spacing: 40,
+                        children: <Widget>[
+                          CircleAvatar(
+                            radius: 100,
+                            backgroundImage: Image.asset(Assets.avatar).image,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                'About Me',
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                                textScaleFactor: 1.5,
+                                textAlign: TextAlign.start,
+                              ),
+                              SizedBox(height:10),
+                              Container(
+                                  width: width,
+                                  child: Text(
+                                    "I am a final year Software Engineering student at Delhi Technological Unveristy. I am also a User Experience enthusiast, and have dedicated the last 2 years of my life in learning the art of creating meaningful interactions between human and machine. I also love mathematics and solving problems (of any kind!). When I'm not coding or designing, I can be found trying to solve a Rubik's cube as fast as possible, helping organize a competition for the same and playing video games.",
+                                    textScaleFactor: 1.4,
+                                  )),
+                            ],
+                          )
+                        ],
+                      )
                     ],
                   ),
                 ),

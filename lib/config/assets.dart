@@ -1,6 +1,6 @@
 class Assets{
   static const moon = 'assets/moon.png';
-  static const avatar = 'assets/avatar.jpg';
+  static const avatar = 'assets/avatar.png';
   static const bg = 'assets/bg.jpg';
   static const design = 'assets/design.png';
   static const behance = 'assets/behance.png';
@@ -18,4 +18,5 @@ class Assets{
   static const totalrecall ='assets/works/totalrecall.png';
   static const creditcard = 'assets/works/creditcard.png';
   static const hi = 'assets/works/hi.png';
+  static const nationals = 'assets/works/nationals.png';
 }
